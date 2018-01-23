@@ -27,6 +27,7 @@ class SelectCurrencyPop: UIViewController {
             dismiss(animated: true, completion: nil)
     }
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -51,9 +52,6 @@ extension SelectCurrencyPop: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             selectionDelegate?.rateReceived(selectedCurrency: currencyNames[row])
-
-       
-       
     }
     
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7524ED2E2015C9F20019D1B4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED2D2015C9F20019D1B4 /* Alert.swift */; };
 		7524ED302015E3860019D1B4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED2F2015E3860019D1B4 /* TextField.swift */; };
+		7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED3A201638C90019D1B4 /* RatesVC.swift */; };
+		7524ED3D201638FF0019D1B4 /* RatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED3C201638FF0019D1B4 /* RatesCell.swift */; };
 		75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693CF2011ECF300A7EB6A /* AppDelegate.swift */; };
 		75A693D52011ECF300A7EB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A693D32011ECF300A7EB6A /* Main.storyboard */; };
 		75A693D72011ECF300A7EB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A693D62011ECF300A7EB6A /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		7524ED2D2015C9F20019D1B4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		7524ED2F2015E3860019D1B4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		7524ED3A201638C90019D1B4 /* RatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesVC.swift; sourceTree = "<group>"; };
+		7524ED3C201638FF0019D1B4 /* RatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesCell.swift; sourceTree = "<group>"; };
 		75A693CC2011ECF300A7EB6A /* EURCurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EURCurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A693CF2011ECF300A7EB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A693D42011ECF300A7EB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +52,7 @@
 			children = (
 				7524ED2F2015E3860019D1B4 /* TextField.swift */,
 				75A693E920120FA300A7EB6A /* AmountCell.swift */,
+				7524ED3C201638FF0019D1B4 /* RatesCell.swift */,
 				7524ED2D2015C9F20019D1B4 /* Alert.swift */,
 			);
 			path = "Additional Classes";
@@ -76,6 +81,7 @@
 				75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */,
 				75A693CF2011ECF300A7EB6A /* AppDelegate.swift */,
 				75A693D32011ECF300A7EB6A /* Main.storyboard */,
+				7524ED3A201638C90019D1B4 /* RatesVC.swift */,
 				7524ED312015EB900019D1B4 /* Additional Classes */,
 				75A693D62011ECF300A7EB6A /* Assets.xcassets */,
 				75A693D82011ECF300A7EB6A /* LaunchScreen.storyboard */,
@@ -157,7 +163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7524ED2E2015C9F20019D1B4 /* Alert.swift in Sources */,
+				7524ED3D201638FF0019D1B4 /* RatesCell.swift in Sources */,
 				75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */,
+				7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */,
 				75A693EA20120FA300A7EB6A /* AmountCell.swift in Sources */,
 				7524ED302015E3860019D1B4 /* TextField.swift in Sources */,
 				75A693E22011ED3700A7EB6A /* MainScreenVC.swift in Sources */,

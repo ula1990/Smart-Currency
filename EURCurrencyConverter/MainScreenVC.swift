@@ -8,20 +8,13 @@
 
 import UIKit
 
-protocol moreInfoAboutRate {
-    func rate(selected: String)
-}
-
 class MainScreenVC: UIViewController {
-    
-    
     enum textFieldInputErrors: Error {
         case emptyField
         case firstNotZero
         case maxCharacters
     }
-    
-    
+
     //MARK: DECLARE ARRAYS
     
     var receivedRates: [Double] = []
@@ -30,8 +23,12 @@ class MainScreenVC: UIViewController {
     var selectedCurrencyActual: String = "EUR"
     var dateOfTheUpdate: String?
     var selectedRateforInfo: String?
-    var selectionDelegateInfoRate: moreInfoAboutRate?
+
+
     
+    @IBAction func test(_ sender: Any) {
+        self.performSegue(withIdentifier: "rates", sender: navigationController)
+    }
     
     //ADDED OUTLETS FOR ALL ELEMENTS
     @IBOutlet weak var tableView: UITableView!
@@ -150,9 +147,6 @@ class MainScreenVC: UIViewController {
         }
         task.resume()
     }
-    
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,8 +169,16 @@ class MainScreenVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectVC = segue.destination as? SelectCurrencyPop, segue.identifier == "SelectCurrencyPop" {
             selectVC.selectionDelegate = self
+
+        }
+        if let rateVC = segue.destination as? RatesVC, segue.identifier == "RatesVC" {
+            rateVC.currencySelected = selectedRateforInfo
+            
         }
     }
+    
+   
+    
     
     //MARK: HIDE KEYBORD IF TOUCHES BEGAN ON THE SCREEN
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -185,7 +187,7 @@ class MainScreenVC: UIViewController {
 
 }
 
-//MARK:TABLE VIEW CONFIGURATIONS
+    //MARK:TABLE VIEW CONFIGURATIONS
 
     extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
     
@@ -200,13 +202,21 @@ class MainScreenVC: UIViewController {
         cell.newLabel.text = (title)
         cell.rateLabel.text = String(rates)
         cell.flagOfCurrency(image: title)
+
         return cell
     }
- 
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as! AmountCell;
+        tableView.deselectRow(at: indexPath, animated: true)
+       
+         self.selectedRateforInfo = currentCell.newLabel.text!
+        self.performSegue(withIdentifier: "RatesVC", sender: currentCell)
+
+        }
+
 }
-
-
-//MARK RECEIVED INFO FROM POP UP
+    //MARK RECEIVED INFO FROM POP UP
     extension MainScreenVC: transferSelectedRateDelegate{
     func rateReceived(selectedCurrency: String) {
         selectedCurrencyLabel.text = selectedCurrency

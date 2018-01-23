@@ -16,8 +16,7 @@ class AmountCell: UITableViewCell {
     @IBOutlet weak var rateLabel: UILabel!
     
     @IBOutlet weak var flagImage: UIImageView!
-    
-    
+
  //UPDATE CURRENCY IMAGE
     func flagOfCurrency(image: String){
         

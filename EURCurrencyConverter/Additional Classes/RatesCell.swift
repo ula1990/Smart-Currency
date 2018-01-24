@@ -12,6 +12,7 @@ class RatesCell: UITableViewCell {
 
     @IBOutlet weak var nameOfTheRates: UILabel!
     @IBOutlet weak var rateOfTheCurrency: UILabel!
+    @IBOutlet weak var differenceLabel: UILabel!
     
     func labelName(selectedByUserCurrency: String, ratesNames: String){
         nameOfTheRates.text = selectedByUserCurrency + "/" + ratesNames

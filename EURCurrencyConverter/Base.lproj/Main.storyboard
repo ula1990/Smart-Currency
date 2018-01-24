@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -200,7 +201,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-OZ-BOZ">
-                                                    <rect key="frame" x="10" y="0.0" width="90" height="99.5"/>
+                                                    <rect key="frame" x="10" y="0.0" width="90" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="Rfr-F5-fc9"/>
                                                     </constraints>
@@ -208,8 +209,18 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7D-4p-vK0">
+                                                    <rect key="frame" x="285" y="3" width="90" height="96"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="0.22113120719178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="a4i-dO-lmj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-rb-zpa">
-                                                    <rect key="frame" x="275" y="0.0" width="90" height="99.5"/>
+                                                    <rect key="frame" x="187" y="0.0" width="90" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="sW5-ZU-WNF"/>
                                                     </constraints>
@@ -220,14 +231,18 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="1t8-rb-zpa" secondAttribute="bottom" id="1N5-Dl-sra"/>
-                                                <constraint firstAttribute="trailing" secondItem="1t8-rb-zpa" secondAttribute="trailing" constant="10" id="5vm-Z2-oYx"/>
+                                                <constraint firstAttribute="trailing" secondItem="1t8-rb-zpa" secondAttribute="trailing" constant="98" id="5vm-Z2-oYx"/>
                                                 <constraint firstAttribute="bottom" secondItem="6gh-OZ-BOZ" secondAttribute="bottom" id="DtD-Kz-Ut7"/>
                                                 <constraint firstItem="1t8-rb-zpa" firstAttribute="top" secondItem="anu-7W-Dce" secondAttribute="top" id="Haa-6C-wBB"/>
                                                 <constraint firstItem="6gh-OZ-BOZ" firstAttribute="top" secondItem="anu-7W-Dce" secondAttribute="top" id="JCC-wV-GqV"/>
+                                                <constraint firstAttribute="trailing" secondItem="w7D-4p-vK0" secondAttribute="trailing" id="K5l-Jl-fJg"/>
+                                                <constraint firstItem="w7D-4p-vK0" firstAttribute="firstBaseline" secondItem="1t8-rb-zpa" secondAttribute="firstBaseline" id="cDV-bE-2FB"/>
+                                                <constraint firstItem="w7D-4p-vK0" firstAttribute="baseline" secondItem="1t8-rb-zpa" secondAttribute="baseline" id="efH-v8-ZND"/>
                                                 <constraint firstItem="6gh-OZ-BOZ" firstAttribute="leading" secondItem="anu-7W-Dce" secondAttribute="leading" constant="10" id="jxD-nA-ewK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="differenceLabel" destination="w7D-4p-vK0" id="Kop-0g-4Ee"/>
                                             <outlet property="nameOfTheRates" destination="6gh-OZ-BOZ" id="ogh-CR-AqO"/>
                                             <outlet property="rateOfTheCurrency" destination="1t8-rb-zpa" id="mU6-k8-gQC"/>
                                         </connections>

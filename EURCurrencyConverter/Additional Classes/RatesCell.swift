@@ -18,19 +18,33 @@ class RatesCell: UITableViewCell {
         nameOfTheRates.text = selectedByUserCurrency + "/" + ratesNames
         
     }
+    func changeColorForLabel(){
+    if differenceLabel.text!.range(of:"-") != nil {
+    differenceLabel.backgroundColor = UIColor.red.withAlphaComponent(0.6)
+
+         
+    }else{
+        differenceLabel.backgroundColor = UIColor.green.withAlphaComponent(0.6)
+ 
+        
+        
+    }
     
-    
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        differenceLabel.layer.cornerRadius = 15
+       
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+    
+    
 
 }

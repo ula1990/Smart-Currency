@@ -35,11 +35,8 @@ class RatesVC: UIViewController {
     //DOWNLOAD FRESH RATES
 
     func getData(nameOfCurrency: String?){
-        
       cleanArrays()
-
         let url = URL(string: "https://api.fixer.io/latest?base=" + nameOfCurrency!)
-        print(url!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
             //FOR FASTER WORK
@@ -50,7 +47,6 @@ class RatesVC: UIViewController {
                 }
                 else{
                     if let content = data
-                        
                     {
                         do{
                             let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
@@ -63,14 +59,8 @@ class RatesVC: UIViewController {
                                 {
                                     self.receivedCurrencyNames.append((key as? String)!)
                                     self.recerivedCurrencyRates.append((value as? Double)!)
-                                   
                                 }
-                                  print(self.recerivedCurrencyRates)
-                             
                             }
-                          
-                            
-                           
                         }
                         catch{
                             Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
@@ -80,13 +70,10 @@ class RatesVC: UIViewController {
              self.tableViewRates.reloadData() }
         }
         task.resume()
-        
-        
     }
     
   func getOld(selectedCurrency: String?, date: String?){
         let urlOld = URL(string: "https://api.fixer.io/" + date! + "?base=" + selectedCurrency!)
-        print(urlOld!)
         let taskOld = URLSession.shared.dataTask(with: urlOld!) { (data, response, error) in
             
             //FOR FASTER WORK
@@ -107,8 +94,6 @@ class RatesVC: UIViewController {
                                     self.oldCurrencyNames.append((key as? String)!)
                                     self.oldCurrencyRates.append((value as? Double)!)
                                 }
-                                print(self.oldCurrencyRates)
-           
                                 self.differenceInRates = self.getDifferenceInRates()
                             }
                             
@@ -132,10 +117,9 @@ class RatesVC: UIViewController {
 
     //CHECK DIFFERENCE BETWEEN OLD RATES AND NEW
     func  getDifferenceInRates() -> [Double]{
-        for (val1,val2) in zip(recerivedCurrencyRates, oldCurrencyRates){
-            differenceInRates.append(val2 - val1)}
-   // self.tableViewRates.reloadData()
-        return differenceInRates
+            for (freshRate,oldRate) in zip(recerivedCurrencyRates, oldCurrencyRates){
+            differenceInRates.append(oldRate - freshRate)}
+            return differenceInRates
     }
     //CLEANING
     func cleanArrays(){
@@ -196,6 +180,8 @@ extension RatesVC: UITableViewDataSource,UITableViewDelegate{
         cell.labelName(selectedByUserCurrency: currencySelected!, ratesNames: title)
         cell.rateOfTheCurrency.text = String(rates)
         cell.differenceLabel.text = String(Float(difference))
+        cell.changeColorForLabel()
+       
         return cell
     }
     

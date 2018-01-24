@@ -150,16 +150,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zxH-aW-dEp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0XQ-ot-tR3"/>
-                            <constraint firstItem="600-6a-hKI" firstAttribute="trailing" secondItem="Bps-kJ-gGb" secondAttribute="trailing" id="60O-E1-2rd"/>
+                            <constraint firstItem="600-6a-hKI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Bps-kJ-gGb" secondAttribute="trailing" id="60O-E1-2rd"/>
                             <constraint firstItem="zxH-aW-dEp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6Ds-C2-cI7"/>
+                            <constraint firstItem="600-6a-hKI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Bps-kJ-gGb" secondAttribute="trailing" id="6dR-VG-ecu"/>
                             <constraint firstItem="mmo-NN-fwS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7jg-Qq-cl6"/>
+                            <constraint firstItem="600-6a-hKI" firstAttribute="trailing" secondItem="Bps-kJ-gGb" secondAttribute="trailing" id="7rZ-rm-nxH"/>
+                            <constraint firstItem="600-6a-hKI" firstAttribute="leading" secondItem="dfk-4V-MR6" secondAttribute="trailing" constant="35" id="BJT-gA-gby"/>
                             <constraint firstItem="600-6a-hKI" firstAttribute="top" secondItem="Bps-kJ-gGb" secondAttribute="bottom" constant="9" id="FjI-EB-lWy"/>
                             <constraint firstItem="Bps-kJ-gGb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JY2-IV-Ne7"/>
+                            <constraint firstItem="dfk-4V-MR6" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Bps-kJ-gGb" secondAttribute="leading" id="PiV-EX-cKy"/>
                             <constraint firstItem="yVl-Fq-a1V" firstAttribute="top" secondItem="mmo-NN-fwS" secondAttribute="bottom" constant="4" id="QXb-Cr-IRg"/>
                             <constraint firstItem="mmo-NN-fwS" firstAttribute="top" secondItem="dfk-4V-MR6" secondAttribute="bottom" constant="12" id="bsu-mQ-sOs"/>
                             <constraint firstItem="yVl-Fq-a1V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jiS-O8-FzS"/>
                             <constraint firstItem="zxH-aW-dEp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lgh-BA-rh2"/>
-                            <constraint firstItem="dfk-4V-MR6" firstAttribute="leading" secondItem="Bps-kJ-gGb" secondAttribute="leading" id="o2v-L0-Td3"/>
+                            <constraint firstItem="dfk-4V-MR6" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Bps-kJ-gGb" secondAttribute="leading" id="o2v-L0-Td3"/>
                             <constraint firstItem="dfk-4V-MR6" firstAttribute="top" secondItem="Bps-kJ-gGb" secondAttribute="bottom" constant="9" id="rNF-bb-XP5"/>
                             <constraint firstItem="Bps-kJ-gGb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="uR2-V1-FRc"/>
                             <constraint firstItem="zxH-aW-dEp" firstAttribute="top" secondItem="mmo-NN-fwS" secondAttribute="bottom" constant="33" id="v4N-Ps-a48"/>
@@ -179,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="133"/>
+            <point key="canvasLocation" x="-26.399999999999999" y="132.68365817091455"/>
         </scene>
         <!--Rates-->
         <scene sceneID="byQ-bE-7qz">
@@ -203,7 +207,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-OZ-BOZ">
                                                     <rect key="frame" x="10" y="0.0" width="90" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="Rfr-F5-fc9"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="Rfr-F5-fc9"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -213,7 +217,7 @@
                                                     <rect key="frame" x="285" y="3" width="90" height="96"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="0.22113120719178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="a4i-dO-lmj"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="a4i-dO-lmj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -222,7 +226,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-rb-zpa">
                                                     <rect key="frame" x="187" y="0.0" width="90" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="sW5-ZU-WNF"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="sW5-ZU-WNF"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

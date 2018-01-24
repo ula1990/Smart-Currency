@@ -18,7 +18,6 @@ class RatesVC: UIViewController {
     var currencySelected: String?
     var receivedRate: String!
     
-    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var tableViewRates: UITableView!
     
     //GET DATE FROM YESTERDAY
@@ -34,13 +33,15 @@ class RatesVC: UIViewController {
    
     
     //DOWNLOAD FRESH RATES
-    
+
     func getData(nameOfCurrency: String?){
         
-        receivedCurrencyNames.removeAll()
-        recerivedCurrencyRates.removeAll()
+      cleanArrays()
+
         let url = URL(string: "https://api.fixer.io/latest?base=" + nameOfCurrency!)
+        print(url!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            
             //FOR FASTER WORK
             DispatchQueue.main.async {
                 if error != nil
@@ -64,28 +65,30 @@ class RatesVC: UIViewController {
                                     self.recerivedCurrencyRates.append((value as? Double)!)
                                    
                                 }
-                                ///eror handling
+                                  print(self.recerivedCurrencyRates)
+                             
                             }
+                          
+                            
+                           
                         }
                         catch{
                             Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
                         }
                     }
                 }
-                self.tableViewRates.reloadData()
-            }
+             self.tableViewRates.reloadData() }
         }
         task.resume()
+        
+        
     }
     
-    
-    
-    func getOldRates(selectedCurrency: String?, date: String? ){
-        oldCurrencyNames.removeAll()
-        oldCurrencyRates.removeAll()
-        let url = URL(string: "https://api.fixer.io/" + date! + "?base=" + selectedCurrency!)
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-        
+  func getOld(selectedCurrency: String?, date: String?){
+        let urlOld = URL(string: "https://api.fixer.io/" + date! + "?base=" + selectedCurrency!)
+        print(urlOld!)
+        let taskOld = URLSession.shared.dataTask(with: urlOld!) { (data, response, error) in
+            
             //FOR FASTER WORK
             DispatchQueue.main.async {
                 if error != nil
@@ -94,60 +97,72 @@ class RatesVC: UIViewController {
                 }
                 else{
                     if let content = data
-                        
                     {
                         do{
                             let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                            
-                            
                             if let rates = myJson["rates"] as? NSDictionary
                             {
-                                
                                 for (key,value ) in rates
                                 {
                                     self.oldCurrencyNames.append((key as? String)!)
                                     self.oldCurrencyRates.append((value as? Double)!)
-                                    
                                 }
-                                 self.differenceInRates = self.getDifferenceInRates(freshRates: self.recerivedCurrencyRates, oldRates: self.oldCurrencyRates)
-                                print(self.differenceInRates)
+                                print(self.oldCurrencyRates)
+           
+                                self.differenceInRates = self.getDifferenceInRates()
                             }
+                            
+
+                            
                         }
                         catch{
                             Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
                         }
                     }
                 }
-                self.tableViewRates.reloadData()
+            self.tableViewRates.reloadData()
             }
         }
-        task.resume()
-    }
-    
-    //CHECK DIFFERENCE BETWEEN OLD RATES AND NEW
-    func  getDifferenceInRates(freshRates: [Double], oldRates: [Double]) -> [Double]{
+        taskOld.resume()
         
-        let difference: [Double] = zip(freshRates, oldRates).map({ $0.0 - $0.1 })
-        return difference
     }
     
-    
+
+
+
+    //CHECK DIFFERENCE BETWEEN OLD RATES AND NEW
+    func  getDifferenceInRates() -> [Double]{
+        for (val1,val2) in zip(recerivedCurrencyRates, oldCurrencyRates){
+            differenceInRates.append(val2 - val1)}
+   // self.tableViewRates.reloadData()
+        return differenceInRates
+    }
+    //CLEANING
+    func cleanArrays(){
+        differenceInRates.removeAll()
+        oldCurrencyNames.removeAll()
+        oldCurrencyRates.removeAll()
+        recerivedCurrencyRates.removeAll()
+        receivedCurrencyNames.removeAll()
+        tableViewRates.reloadData()
+    }
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData(nameOfCurrency: currencySelected)
-        getOldRates(selectedCurrency: currencySelected, date: yesterdayDate())
-       
-        
+        getOld(selectedCurrency: self.currencySelected, date: yesterdayDate())
+        getData(nameOfCurrency: self.currencySelected)
         tableViewRates.delegate = self
         tableViewRates.dataSource = self
         
-        
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+      
     }
     
 
@@ -155,16 +170,25 @@ class RatesVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 }
+
 extension RatesVC: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard recerivedCurrencyRates.count != 0,
+            differenceInRates.count != 0,
+            receivedCurrencyNames.count != 0
+            else {
+                self.getOld(selectedCurrency: self.currencySelected, date: yesterdayDate())
+                self.differenceInRates = self.getDifferenceInRates()
+               
+                return 0
+        }
         return receivedCurrencyNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let title = receivedCurrencyNames[indexPath.row]
         let rates = recerivedCurrencyRates[indexPath.row]
         let difference = differenceInRates[indexPath.row]

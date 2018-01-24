@@ -24,8 +24,6 @@ class MainScreenVC: UIViewController {
     var dateOfTheUpdate: String?
     var selectedRateforInfo: String?
 
-
-    
     @IBAction func test(_ sender: Any) {
         self.performSegue(withIdentifier: "rates", sender: navigationController)
     }
@@ -147,6 +145,8 @@ class MainScreenVC: UIViewController {
         }
         task.resume()
     }
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,8 +172,7 @@ class MainScreenVC: UIViewController {
 
         }
         if let rateVC = segue.destination as? RatesVC, segue.identifier == "RatesVC" {
-            rateVC.currencySelected = selectedRateforInfo
-            
+            rateVC.currencySelected = self.selectedRateforInfo
         }
     }
     
@@ -209,7 +208,6 @@ class MainScreenVC: UIViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! AmountCell;
         tableView.deselectRow(at: indexPath, animated: true)
-       
          self.selectedRateforInfo = currentCell.newLabel.text!
         self.performSegue(withIdentifier: "RatesVC", sender: currentCell)
 

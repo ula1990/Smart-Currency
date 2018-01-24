@@ -24,10 +24,6 @@ class MainScreenVC: UIViewController {
     var dateOfTheUpdate: String?
     var selectedRateforInfo: String?
 
-    @IBAction func test(_ sender: Any) {
-        self.performSegue(withIdentifier: "rates", sender: navigationController)
-    }
-    
     //ADDED OUTLETS FOR ALL ELEMENTS
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -50,7 +46,7 @@ class MainScreenVC: UIViewController {
             try textFieldDidChange(inputTextField)
             
         }catch textFieldInputErrors.emptyField{
-            Alert.showBasic(title: "Field is empty", msg: "Please check the field", vc: self)
+            print(Error.self)
         }catch textFieldInputErrors.maxCharacters{
             Alert.showBasic(title: "Max Length", msg: "Maximum amount of numbers in the field is 10", vc: self)
         }catch textFieldInputErrors.firstNotZero{
@@ -59,7 +55,7 @@ class MainScreenVC: UIViewController {
             Alert.showBasic(title: "Incorrect input", msg: "Please check the field", vc: self)
         }
    
-    }
+    } 
     
     //FUNC TO CALCULATE AMOUNT AFTER INPUT
     func calculateAmount(){
@@ -76,24 +72,9 @@ class MainScreenVC: UIViewController {
     
     //MONITOR CHAGES IN TEXTFIELD
     @objc func textFieldDidChange(_ textField: UITextField) throws {
-        
-        let textField = textField.text!
         tableView.reloadData()
         calculateAmount()
-        
-        if textField.isEmpty {
-            
-            throw textFieldInputErrors.emptyField
-        }
-        if textField.count > 9 {
-            
-            throw textFieldInputErrors.maxCharacters
-        }
-        if textField == "00" {
-            throw textFieldInputErrors.firstNotZero
-        }
-        
-        
+    
     }
     
     //MARK: GET DATA FROM API
@@ -156,6 +137,7 @@ class MainScreenVC: UIViewController {
         inputTextField.text = "0"
         inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .allEditingEvents)
         inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
      
         selectButton.layer.cornerRadius = 10
         updateRates.layer.cornerRadius = 10
@@ -222,6 +204,39 @@ class MainScreenVC: UIViewController {
         tableView.reloadData()
     }
     
+}
+
+
+extension MainScreenVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        //Prevent "0" characters as the first characters. (i.e.: There should not be values like "003" "01" "000012" etc.)
+        if inputTextField.text?.count == 0 && string == "0" {
+            Alert.showBasic(title: "Incorrect input", msg: "First number can't be 0", vc: self)
+            return false
+        }
+        
+        //Limit the character count to 10.
+        if ((inputTextField.text!) + string).count > 10 {
+            Alert.showBasic(title: "Max Length", msg: "Maximum amount of numbers in the field is 10", vc: self)
+            return false
+        }
+        
+        //Have a decimal keypad. Which means user will be able to enter Double values. (Needless to say "." will be limited one)
+        if (inputTextField.text?.contains("."))! && string == "." {
+            Alert.showBasic(title: "Incorrect input", msg: "Please check the field", vc: self)
+            return false
+        }
+        
+        //Only allow numbers. No Copy-Paste text values.
+        let allowedCharacterSet = CharacterSet.init(charactersIn: "0123456789.")
+        let textCharacterSet = CharacterSet.init(charactersIn: inputTextField.text! + string)
+        if !allowedCharacterSet.isSuperset(of: textCharacterSet) {
+            return false
+        }
+        return true
+    }
 }
 
 

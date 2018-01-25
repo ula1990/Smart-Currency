@@ -24,7 +24,7 @@ class RatesCell: UITableViewCell {
 
          
     }else{
-        differenceLabel.backgroundColor = UIColor.green.withAlphaComponent(0.6)
+        differenceLabel.backgroundColor = UIColor.green.withAlphaComponent(0.5)
  
         
         

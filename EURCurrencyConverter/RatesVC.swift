@@ -17,6 +17,7 @@ class RatesVC: UIViewController {
     var differenceInRates: [Double] = []
     var currencySelected: String?
     var receivedRate: String!
+    var justOnce: Bool = true
     
     @IBOutlet weak var tableViewRates: UITableView!
     
@@ -43,7 +44,11 @@ class RatesVC: UIViewController {
             DispatchQueue.main.async {
                 if error != nil
                 {
-                    Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
+                    if  self.justOnce{
+                        Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
+                        
+                        self.justOnce = false
+                    }
                 }
                 else{
                     if let content = data
@@ -80,7 +85,10 @@ class RatesVC: UIViewController {
             DispatchQueue.main.async {
                 if error != nil
                 {
+                     if  self.justOnce{
                     Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
+                        self.justOnce = false
+                    }
                 }
                 else{
                     if let content = data

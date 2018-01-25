@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75202F3C2019E3DF00D74E8A /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */; };
+		752228242019F5C6000259CF /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752228232019F5C6000259CF /* AboutVC.swift */; };
 		7524ED2E2015C9F20019D1B4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED2D2015C9F20019D1B4 /* Alert.swift */; };
 		7524ED302015E3860019D1B4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED2F2015E3860019D1B4 /* TextField.swift */; };
 		7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524ED3A201638C90019D1B4 /* RatesVC.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		752228232019F5C6000259CF /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		7524ED2D2015C9F20019D1B4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		7524ED2F2015E3860019D1B4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7524ED3A201638C90019D1B4 /* RatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesVC.swift; sourceTree = "<group>"; };
@@ -84,7 +88,9 @@
 				75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */,
 				75A693CF2011ECF300A7EB6A /* AppDelegate.swift */,
 				75A693D32011ECF300A7EB6A /* Main.storyboard */,
+				752228232019F5C6000259CF /* AboutVC.swift */,
 				7524ED3A201638C90019D1B4 /* RatesVC.swift */,
+				75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */,
 				7524ED312015EB900019D1B4 /* Additional Classes */,
 				75A693D62011ECF300A7EB6A /* Assets.xcassets */,
 				75A693D82011ECF300A7EB6A /* LaunchScreen.storyboard */,
@@ -166,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7524ED2E2015C9F20019D1B4 /* Alert.swift in Sources */,
+				75202F3C2019E3DF00D74E8A /* UIButtonExtension.swift in Sources */,
 				7524ED3D201638FF0019D1B4 /* RatesCell.swift in Sources */,
 				75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */,
 				7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */,
@@ -173,6 +180,7 @@
 				7583923820192F85004B1900 /* DiffLabel.swift in Sources */,
 				7524ED302015E3860019D1B4 /* TextField.swift in Sources */,
 				75A693E22011ED3700A7EB6A /* MainScreenVC.swift in Sources */,
+				752228242019F5C6000259CF /* AboutVC.swift in Sources */,
 				75A693E42011F78000A7EB6A /* SelectCurrencyPop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

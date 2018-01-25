@@ -32,10 +32,18 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var selectedCurrencyLabel: UILabel!
     @IBOutlet weak var lastUpdateLabel: UILabel!
     
+    
+    
+    
+    @IBAction func selectCurrency(_ sender: UIButton) {
+          sender.pulstate()
+    }
+    
+    
     //UPDATE RATES
-    @IBAction func updateRates(_ sender: Any) {
-        
-         getData(nameOfCurrency: selectedCurrencyLabel.text)
+    @IBAction func updateRates(_ sender: UIButton) {
+            sender.flash()
+            getData(nameOfCurrency: selectedCurrencyLabel.text)
         
     }
     
@@ -88,7 +96,7 @@ class MainScreenVC: UIViewController {
             DispatchQueue.main.async {
                 if error != nil
                 {
-                    Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
+                    Alert.showBasic(title: "No Internet", msg: "Please check connection and update the rates", vc: self)
                 }
                 else{
                     if let content = data
@@ -144,9 +152,33 @@ class MainScreenVC: UIViewController {
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = "Welcome"
+        navigationController?.navigationBar.topItem?.title = "Smart currency"
        
     }
+    
+    
+    
+    //ABOUT BUTTON
+    @IBAction func aboutButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "AboutVC", sender: navigationController)
+    }
+    
+    
+    //SHARE BUTTON
+    
+    @IBAction func shareButton(_ sender: Any) {
+        
+        let mainVC = UIActivityViewController(activityItems: ["Take a look at this amazing app. which can convert different currencies, it's called 'Smart Currency'"], applicationActivities: nil)
+        mainVC.popoverPresentationController?.sourceView = self.view
+        self.present(mainVC, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectVC = segue.destination as? SelectCurrencyPop, segue.identifier == "SelectCurrencyPop" {
@@ -188,7 +220,7 @@ class MainScreenVC: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath) as! AmountCell;
+        let currentCell = tableView.cellForRow(at: indexPath) as! AmountCell
         tableView.deselectRow(at: indexPath, animated: true)
          self.selectedRateforInfo = currentCell.newLabel.text!
         self.performSegue(withIdentifier: "RatesVC", sender: currentCell)

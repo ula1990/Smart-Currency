@@ -77,6 +77,7 @@ class RatesVC: UIViewController {
         task.resume()
     }
     
+    //GET OLD RATES
   func getOld(selectedCurrency: String?, date: String?){
         let urlOld = URL(string: "https://api.fixer.io/" + date! + "?base=" + selectedCurrency!)
         let taskOld = URLSession.shared.dataTask(with: urlOld!) { (data, response, error) in
@@ -119,9 +120,6 @@ class RatesVC: UIViewController {
         taskOld.resume()
         
     }
-    
-
-
 
     //CHECK DIFFERENCE BETWEEN OLD RATES AND NEW
     func  getDifferenceInRates() -> [Double]{
@@ -138,10 +136,7 @@ class RatesVC: UIViewController {
         receivedCurrencyNames.removeAll()
         tableViewRates.reloadData()
     }
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getOld(selectedCurrency: self.currencySelected, date: yesterdayDate())

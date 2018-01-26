@@ -9,23 +9,20 @@
 import UIKit
 
 class MainScreenVC: UIViewController {
+    
     enum textFieldInputErrors: Error {
         case emptyField
         case firstNotZero
         case maxCharacters
     }
 
-    //MARK: DECLARE ARRAYS
+    //MARK: DECLARE
     
     var receivedRates: [Double] = []
     var receivedTitle: [String] = []
     var currentAmount: [Double] = []
     var selectedCurrencyActual: String = "EUR"
-    var dateOfTheUpdate: String?
     var selectedRateforInfo: String?
-    
-    //CURRENCY FORMAT
-    
     let formatter = NumberFormatter()
     
 
@@ -36,19 +33,16 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var updateRates: UIButton!
     @IBOutlet weak var selectedCurrencyLabel: UILabel!
     @IBOutlet weak var lastUpdateLabel: UILabel!
-    
-    
-    
-    
+
     @IBAction func selectCurrency(_ sender: UIButton) {
-          sender.pulstate()
+        sender.pulstate()
     }
     
     
     //UPDATE RATES
     @IBAction func updateRates(_ sender: UIButton) {
-            sender.flash()
-            getData(nameOfCurrency: selectedCurrencyLabel.text)
+        sender.flash()
+        getData(nameOfCurrency: selectedCurrencyLabel.text)
         
     }
     
@@ -141,35 +135,10 @@ class MainScreenVC: UIViewController {
         task.resume()
     }
     
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        selectedCurrencyLabel.text = "EUR"
-        getData(nameOfCurrency: selectedCurrencyLabel.text)
-        selectedCurrencyLabel.text = selectedCurrencyActual
-        inputTextField.text = "0"
-        inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .allEditingEvents)
-        inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
-     
-        selectButton.layer.cornerRadius = 10
-        updateRates.layer.cornerRadius = 10
-        
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-
-
-       
-    }
-    
-    
-    
     //ABOUT BUTTON
     @IBAction func aboutButton(_ sender: Any) {
         self.performSegue(withIdentifier: "AboutVC", sender: navigationController)
     }
-    
     
     //SHARE BUTTON
     
@@ -179,34 +148,38 @@ class MainScreenVC: UIViewController {
         mainVC.popoverPresentationController?.sourceView = self.view
         self.present(mainVC, animated: true, completion: nil)
         
-        
     }
-    
-    
-    
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectVC = segue.destination as? SelectCurrencyPop, segue.identifier == "SelectCurrencyPop" {
             selectVC.selectionDelegate = self
-
+            
         }
         if let rateVC = segue.destination as? RatesVC, segue.identifier == "RatesVC" {
             rateVC.currencySelected = self.selectedRateforInfo
         }
     }
     
-   
-    
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        selectedCurrencyLabel.text = "EUR"
+        getData(nameOfCurrency: selectedCurrencyLabel.text)
+        selectedCurrencyLabel.text = selectedCurrencyActual
+        inputTextField.text = "0"
+        inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .allEditingEvents)
+        inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        selectButton.layer.cornerRadius = 10
+        updateRates.layer.cornerRadius = 10
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+
     //MARK: HIDE KEYBORD IF TOUCHES BEGAN ON THE SCREEN
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 
 }
-
     //MARK:TABLE VIEW CONFIGURATIONS
 
     extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
@@ -230,7 +203,7 @@ class MainScreenVC: UIViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! AmountCell
         tableView.deselectRow(at: indexPath, animated: true)
-         self.selectedRateforInfo = currentCell.newLabel.text!
+        self.selectedRateforInfo = currentCell.newLabel.text!
         self.performSegue(withIdentifier: "RatesVC", sender: currentCell)
 
         }
@@ -245,7 +218,6 @@ class MainScreenVC: UIViewController {
     }
     
 }
-
 
 extension MainScreenVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

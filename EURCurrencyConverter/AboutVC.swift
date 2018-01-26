@@ -42,16 +42,10 @@ class AboutVC: UIViewController {
         }
         
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-
 }
 
 extension AboutVC : MFMailComposeViewControllerDelegate {
@@ -74,7 +68,6 @@ extension AboutVC : MFMailComposeViewControllerDelegate {
         self.present(sendMailErrorAlert, animated: true, completion: nil)
         
     }
-    
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil )

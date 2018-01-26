@@ -8,13 +8,11 @@
 
 import UIKit
 
-
 protocol transferSelectedRateDelegate{
     func rateReceived(selectedCurrency: String )
 }
 
 class SelectCurrencyPop: UIViewController {
-    
     
     var currencyNames = ["CNY", "PLN", "THB", "BGN", "AUD", "SEK", "ILS", "BRL", "DKK", "GBP", "RUB", "CHF", "MXN", "HRK", "RON", "TRY", "SGD", "NOK", "HUF", "NZD", "USD", "MYR", "IDR", "KRW", "JPY", "INR", "PHP", "CZK", "HKD", "ZAR", "CAD","EUR"]
     var selectedCurrency: String!
@@ -26,15 +24,12 @@ class SelectCurrencyPop: UIViewController {
     @IBAction func saveData(_ sender: Any) {
             dismiss(animated: true, completion: nil)
     }
-    
- 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
        
     }
 }
-
 
 extension SelectCurrencyPop: UIPickerViewDelegate, UIPickerViewDataSource {
     

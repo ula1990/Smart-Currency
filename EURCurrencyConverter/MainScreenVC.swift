@@ -23,6 +23,11 @@ class MainScreenVC: UIViewController {
     var selectedCurrencyActual: String = "EUR"
     var dateOfTheUpdate: String?
     var selectedRateforInfo: String?
+    
+    //CURRENCY FORMAT
+    
+    let formatter = NumberFormatter()
+    
 
     //ADDED OUTLETS FOR ALL ELEMENTS
     @IBOutlet weak var tableView: UITableView!
@@ -215,7 +220,8 @@ class MainScreenVC: UIViewController {
         let rates = currentAmount[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AmountCell
         cell.newLabel.text = (title)
-        cell.rateLabel.text = String(rates)
+        formatter.numberStyle = .decimal
+        cell.rateLabel.text = (formatter.string(from:rates as NSNumber))
         cell.flagOfCurrency(image: title)
 
         return cell

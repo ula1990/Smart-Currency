@@ -125,7 +125,8 @@ class MainScreenVC: UIViewController {
                             }
                         }
                         catch{
-                            Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
+                           // Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
+                            self.getData(nameOfCurrency: self.selectedCurrencyLabel.text! )
                         }
                     }
                 }
@@ -152,7 +153,8 @@ class MainScreenVC: UIViewController {
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = "Smart currency"
+
+
        
     }
     

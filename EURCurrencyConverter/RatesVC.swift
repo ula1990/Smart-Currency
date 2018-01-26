@@ -36,7 +36,7 @@ class RatesVC: UIViewController {
     //DOWNLOAD FRESH RATES
 
     func getData(nameOfCurrency: String?){
-      cleanArrays()
+        cleanArrays()
         let url = URL(string: "https://api.fixer.io/latest?base=" + nameOfCurrency!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
@@ -167,7 +167,7 @@ class RatesVC: UIViewController {
 extension RatesVC: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard recerivedCurrencyRates.count != 0,
+            guard recerivedCurrencyRates.count != 0,
             differenceInRates.count != 0,
             receivedCurrencyNames.count != 0
             else {

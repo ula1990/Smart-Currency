@@ -21,6 +21,8 @@
 		75A693E22011ED3700A7EB6A /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693E12011ED3700A7EB6A /* MainScreenVC.swift */; };
 		75A693E42011F78000A7EB6A /* SelectCurrencyPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */; };
 		75A693EA20120FA300A7EB6A /* AmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693E920120FA300A7EB6A /* AmountCell.swift */; };
+		75A919EE201CFFA000963428 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A919ED201CFFA000963428 /* NavigationVC.swift */; };
+		75A919F1201D093C00963428 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A919F0201D093C00963428 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		75A693E12011ED3700A7EB6A /* MainScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
 		75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyPop.swift; sourceTree = "<group>"; };
 		75A693E920120FA300A7EB6A /* AmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountCell.swift; sourceTree = "<group>"; };
+		75A919ED201CFFA000963428 /* NavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
+		75A919F0201D093C00963428 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A919F1201D093C00963428 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,7 @@
 		7524ED312015EB900019D1B4 /* Additional Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */,
 				7524ED2F2015E3860019D1B4 /* TextField.swift */,
 				75A693E920120FA300A7EB6A /* AmountCell.swift */,
 				7524ED3C201638FF0019D1B4 /* RatesCell.swift */,
@@ -70,6 +76,7 @@
 			children = (
 				75A693CE2011ECF300A7EB6A /* EURCurrencyConverter */,
 				75A693CD2011ECF300A7EB6A /* Products */,
+				75A919EF201D093C00963428 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,19 +91,35 @@
 		75A693CE2011ECF300A7EB6A /* EURCurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				75A693E12011ED3700A7EB6A /* MainScreenVC.swift */,
-				75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */,
-				75A693CF2011ECF300A7EB6A /* AppDelegate.swift */,
+				75A693D82011ECF300A7EB6A /* LaunchScreen.storyboard */,
 				75A693D32011ECF300A7EB6A /* Main.storyboard */,
-				752228232019F5C6000259CF /* AboutVC.swift */,
-				7524ED3A201638C90019D1B4 /* RatesVC.swift */,
-				75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */,
+				75A693DB2011ECF300A7EB6A /* Info.plist */,
+				75A919EC201CFF5600963428 /* VCs */,
+				75A693CF2011ECF300A7EB6A /* AppDelegate.swift */,
 				7524ED312015EB900019D1B4 /* Additional Classes */,
 				75A693D62011ECF300A7EB6A /* Assets.xcassets */,
-				75A693D82011ECF300A7EB6A /* LaunchScreen.storyboard */,
-				75A693DB2011ECF300A7EB6A /* Info.plist */,
 			);
 			path = EURCurrencyConverter;
+			sourceTree = "<group>";
+		};
+		75A919EC201CFF5600963428 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				75A693E12011ED3700A7EB6A /* MainScreenVC.swift */,
+				75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */,
+				752228232019F5C6000259CF /* AboutVC.swift */,
+				7524ED3A201638C90019D1B4 /* RatesVC.swift */,
+				75A919ED201CFFA000963428 /* NavigationVC.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		75A919EF201D093C00963428 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75A919F0201D093C00963428 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +200,7 @@
 				75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */,
 				7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */,
 				75A693EA20120FA300A7EB6A /* AmountCell.swift in Sources */,
+				75A919EE201CFFA000963428 /* NavigationVC.swift in Sources */,
 				7583923820192F85004B1900 /* DiffLabel.swift in Sources */,
 				7524ED302015E3860019D1B4 /* TextField.swift in Sources */,
 				75A693E22011ED3700A7EB6A /* MainScreenVC.swift in Sources */,

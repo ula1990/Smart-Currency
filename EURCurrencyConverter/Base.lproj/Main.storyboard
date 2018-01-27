@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +61,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="600-6a-hKI">
                                 <rect key="frame" x="20" y="262" width="335" height="40"/>
-                                <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="0.69798801369863017" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eLQ-UE-boL"/>
                                 </constraints>
@@ -213,13 +214,22 @@
                                 <action selector="aboutButton:" destination="BYZ-38-t0r" id="Tja-Bk-guR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="3DH-vg-TMI">
-                            <connections>
-                                <action selector="shareButton:" destination="BYZ-38-t0r" id="Fo6-O9-7Bn"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="3DH-vg-TMI">
+                                <connections>
+                                    <action selector="shareButton:" destination="BYZ-38-t0r" id="Fo6-O9-7Bn"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem tag="-6" image="navi" id="ehF-KV-npS">
+                                <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="navigationButton:" destination="BYZ-38-t0r" id="7bW-wZ-mAG"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="currentCurrencyLabelText" destination="P1B-h5-Udp" id="TG9-3f-XPH"/>
                         <outlet property="inputTextField" destination="Bps-kJ-gGb" id="gc9-Vl-CRZ"/>
                         <outlet property="lastUpdateLabel" destination="yVl-Fq-a1V" id="pSf-MT-FFP"/>
                         <outlet property="selectButton" destination="dfk-4V-MR6" id="MUz-NF-KoT"/>
@@ -228,11 +238,44 @@
                         <outlet property="updateRates" destination="600-6a-hKI" id="OpA-ts-Qwc"/>
                         <segue destination="uYO-0H-612" kind="show" identifier="RatesVC" id="1fp-JE-Sve"/>
                         <segue destination="VBw-BT-PIo" kind="show" identifier="AboutVC" id="tud-oF-18w"/>
+                        <segue destination="93i-hV-82M" kind="show" identifier="navigation" id="W17-OY-Yfr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26.399999999999999" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-198" y="133"/>
+        </scene>
+        <!--Nearest Exchange point-->
+        <scene sceneID="Mlh-CJ-8dd">
+            <objects>
+                <viewController title="Nearest Exchange point" id="93i-hV-82M" customClass="NavigationVC" customModule="EURCurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2q6-eg-KwA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EUx-xU-RtR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="93i-hV-82M" id="31Z-T0-QrX"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EUx-xU-RtR" firstAttribute="bottom" secondItem="znH-SL-VXN" secondAttribute="bottom" id="B7q-tI-0J7"/>
+                            <constraint firstItem="EUx-xU-RtR" firstAttribute="top" secondItem="znH-SL-VXN" secondAttribute="top" id="Epc-7Z-79k"/>
+                            <constraint firstItem="EUx-xU-RtR" firstAttribute="trailing" secondItem="znH-SL-VXN" secondAttribute="trailing" id="TLN-jY-ujY"/>
+                            <constraint firstItem="EUx-xU-RtR" firstAttribute="leading" secondItem="znH-SL-VXN" secondAttribute="leading" id="blY-8W-dLm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="znH-SL-VXN"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="EUx-xU-RtR" id="d8M-pE-fe0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GAx-HB-0vG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1141.5999999999999" y="1033.1334332833585"/>
         </scene>
         <!--Rates-->
         <scene sceneID="byQ-bE-7qz">
@@ -262,33 +305,33 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-rb-zpa">
-                                                    <rect key="frame" x="182" y="0.0" width="90" height="100"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="w7D-4p-vK0" customClass="DiffLabel" customModule="EURCurrencyConverter" customModuleProvider="target">
+                                                    <rect key="frame" x="309" y="10" width="64" height="80"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="0.22113120719178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="6XS-7d-PZk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-rb-zpa">
+                                                    <rect key="frame" x="211" y="-1" width="90" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="sW5-ZU-WNF"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7D-4p-vK0" customClass="DiffLabel" customModule="EURCurrencyConverter" customModuleProvider="target">
-                                                    <rect key="frame" x="278" y="10" width="95" height="79.5"/>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="0.22113120719178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95" id="6XS-7d-PZk"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="1t8-rb-zpa" secondAttribute="bottom" id="1N5-Dl-sra"/>
-                                                <constraint firstAttribute="trailing" secondItem="1t8-rb-zpa" secondAttribute="trailing" constant="103" id="5vm-Z2-oYx"/>
+                                                <constraint firstAttribute="trailing" secondItem="1t8-rb-zpa" secondAttribute="trailing" constant="74" id="5vm-Z2-oYx"/>
                                                 <constraint firstAttribute="trailing" secondItem="w7D-4p-vK0" secondAttribute="trailing" constant="2" id="CF2-6h-28L"/>
                                                 <constraint firstAttribute="bottom" secondItem="1t8-rb-zpa" secondAttribute="bottom" id="Enc-mn-Hxp"/>
                                                 <constraint firstItem="6gh-OZ-BOZ" firstAttribute="leading" secondItem="anu-7W-Dce" secondAttribute="leading" constant="6" id="FvY-yh-1Jk"/>
-                                                <constraint firstItem="1t8-rb-zpa" firstAttribute="top" secondItem="anu-7W-Dce" secondAttribute="top" id="Haa-6C-wBB"/>
+                                                <constraint firstItem="1t8-rb-zpa" firstAttribute="top" secondItem="anu-7W-Dce" secondAttribute="top" constant="-1" id="Haa-6C-wBB"/>
                                                 <constraint firstItem="w7D-4p-vK0" firstAttribute="top" secondItem="anu-7W-Dce" secondAttribute="top" constant="10" id="LII-u8-I9A"/>
                                                 <constraint firstItem="6gh-OZ-BOZ" firstAttribute="top" secondItem="anu-7W-Dce" secondAttribute="top" id="MKO-JA-RcI"/>
                                                 <constraint firstAttribute="bottom" secondItem="6gh-OZ-BOZ" secondAttribute="bottom" id="OJ9-lD-zOj"/>
@@ -320,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZZ-WL-lcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328.80000000000001" y="1122.1889055472266"/>
+            <point key="canvasLocation" x="-162" y="1033"/>
         </scene>
         <!--About-->
         <scene sceneID="Edx-tp-hFH">
@@ -430,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZO-9o-E5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1159.2" y="1120.3898050974515"/>
+            <point key="canvasLocation" x="828" y="1032"/>
         </scene>
         <!--Select Currency Pop-->
         <scene sceneID="p73-Nf-zbJ">
@@ -504,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a9-xU-tdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="828" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="51Y-iL-Y0Z">
@@ -533,6 +576,7 @@
     <resources>
         <image name="email" width="96" height="96"/>
         <image name="menu" width="48" height="48"/>
+        <image name="navi" width="25" height="25"/>
         <image name="rate" width="96" height="96"/>
         <image name="safe" width="256" height="256"/>
         <image name="twitter" width="96" height="96"/>

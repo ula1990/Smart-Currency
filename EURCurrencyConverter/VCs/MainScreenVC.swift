@@ -33,7 +33,8 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var updateRates: UIButton!
     @IBOutlet weak var selectedCurrencyLabel: UILabel!
     @IBOutlet weak var lastUpdateLabel: UILabel!
-
+    @IBOutlet weak var currentCurrencyLabelText: UILabel!
+    
     @IBAction func selectCurrency(_ sender: UIButton) {
         sender.pulstate()
     }
@@ -149,6 +150,15 @@ class MainScreenVC: UIViewController {
         self.present(mainVC, animated: true, completion: nil)
         
     }
+    
+    @IBAction func navigationButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: "navigation", sender: navigationController)
+        
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectVC = segue.destination as? SelectCurrencyPop, segue.identifier == "SelectCurrencyPop" {
             selectVC.selectionDelegate = self
@@ -206,6 +216,21 @@ class MainScreenVC: UIViewController {
         self.selectedRateforInfo = currentCell.newLabel.text!
         self.performSegue(withIdentifier: "RatesVC", sender: currentCell)
 
+        }
+        
+        @available(iOS 11.0, *)
+        func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let closeAction = UIContextualAction(style: .normal, title:  "Close", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+
+                let cell = tableView.cellForRow(at: indexPath) as! AmountCell
+                UIPasteboard.general.string = cell.rateLabel.text
+                
+                success(true)
+            })
+            closeAction.title = "Copy"
+            closeAction.backgroundColor = .orange
+            
+            return UISwipeActionsConfiguration(actions: [closeAction])
         }
 
 }

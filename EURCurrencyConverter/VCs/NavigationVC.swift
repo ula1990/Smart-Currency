@@ -38,13 +38,13 @@ extension NavigationVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01 )
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1 )
         let userLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(userLocation, span)
         mapView.setRegion(region, animated: true)
         self.mapView.showsUserLocation = true
         
-        request.naturalLanguageQuery = "Kantor"
+        request.naturalLanguageQuery = "currency exchange"
         request.region = mapView.region
         let activeSearch = MKLocalSearch(request: request)
         activeSearch.start { (response, error) in

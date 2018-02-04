@@ -2,7 +2,7 @@
 //  NavigationVC.swift
 //  EURCurrencyConverter
 //
-//  Created by Ulad Daratsiuk-Demchuk on 2018-01-27.
+//  Created by Ulad Daratsiuk-Demchuk on 2018-02-04.
 //  Copyright © 2018 Uladzislau Daratsiuk. All rights reserved.
 //
 
@@ -11,13 +11,10 @@ import MapKit
 import CoreLocation
 
 class NavigationVC: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     let manager = CLLocationManager()
     let request = MKLocalSearchRequest()
-    
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +23,13 @@ class NavigationVC: UIViewController {
         manager.desiredAccuracy =   kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-    
-
+        
+        
+        
+        
     }
-
-
+    
+    
 }
 //MARK: CONFIGURATION OF MAPVIEW
 
@@ -54,20 +53,66 @@ extension NavigationVC: CLLocationManagerDelegate {
             }
             
             for item in response.mapItems {
-                print(response.mapItems)
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
+                annotation.subtitle = "Currency Exchange"
                 
                 DispatchQueue.main.async {
                     self.mapView.addAnnotation(annotation)
                 }
-                
             }
-            
         }
         
+        
+    }
+    
+    
+  /*  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation else {
+            return
+        }
+        
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = MKMapItem.forCurrentLocation()
+        directionRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate))
+        directionRequest.transportType = .automobile
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate {
+            (response, error) -> Void in
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+                return
+            }
+            
+            if !response.routes.isEmpty {
+                let route = response.routes[0]
+                DispatchQueue.main.async { [weak self] in
+                    self?.mapView.add(route.polyline)
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+        polylineRenderer.strokeColor = UIColor.blue
+        polylineRenderer.fillColor = UIColor.red
+        polylineRenderer.lineWidth = 2
+        return polylineRenderer
+        
+        
+    }
+ 
+ */
+    
 }
-}
+
 
 

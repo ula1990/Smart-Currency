@@ -34,10 +34,13 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var selectedCurrencyLabel: UILabel!
     @IBOutlet weak var lastUpdateLabel: UILabel!
     @IBOutlet weak var currentCurrencyLabelText: UILabel!
+
     
     @IBAction func selectCurrency(_ sender: UIButton) {
         sender.pulstate()
     }
+    
+   
     
     
     //UPDATE RATES
@@ -85,6 +88,11 @@ class MainScreenVC: UIViewController {
     
     }
     
+    //FUNC TO HIDE KEYBOARD
+    @objc func finishedWithInput (){
+        view.endEditing(true)
+    }
+    
     //MARK: GET DATA FROM API
     func getData(nameOfCurrency: String?){
         
@@ -100,11 +108,9 @@ class MainScreenVC: UIViewController {
                 }
                 else{
                     if let content = data
-                        
                     {
                         do{
                             let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                            
                             if let date = myJson["date"] as? NSString
                             {
                                 self.lastUpdateLabel.text = "Last update: " + (date as String)
@@ -121,11 +127,9 @@ class MainScreenVC: UIViewController {
                                     self.receivedRates.append((value as? Double)!)
                                     self.calculateAmount()
                                 }
-                                ///eror handling
                             }
                         }
                         catch{
-                           // Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
                             self.getData(nameOfCurrency: self.selectedCurrencyLabel.text! )
                         }
                     }
@@ -136,29 +140,54 @@ class MainScreenVC: UIViewController {
         task.resume()
     }
     
-    //ABOUT BUTTON
-    @IBAction func aboutButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "AboutVC", sender: navigationController)
-    }
     
     //SHARE BUTTON
     
     @IBAction func shareButton(_ sender: Any) {
         
-        let mainVC = UIActivityViewController(activityItems: ["Take a look at this amazing app. which can convert different currencies, it's called 'Smart Currency'"], applicationActivities: nil)
-        mainVC.popoverPresentationController?.sourceView = self.view
-        self.present(mainVC, animated: true, completion: nil)
-        
+        showActionSheet()
     }
     
-    @IBAction func navigationButton(_ sender: Any) {
+    //NAVIGATION BUTTON
+    
+    @IBAction func naviButton(_ sender: Any) {
         
-        performSegue(withIdentifier: "navigation", sender: navigationController)
-        
+        self.performSegue(withIdentifier: "navi", sender: navigationController)
     }
     
+    //CONFIGURATION OF ACTIONSHEET
     
     
+    func showActionSheet(){
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let aboutPage = UIAlertAction(title: "About", style: .default) {action in
+            
+             self.performSegue(withIdentifier: "AboutVC", sender: self.navigationController)
+        }
+        
+        let shareButton = UIAlertAction(title: "Share", style: .default) { action in
+            
+            let mainVC = UIActivityViewController(activityItems: ["Take a look at this amazing app. which can convert different currencies, it's called 'Smart Currency'"], applicationActivities: nil)
+            mainVC.popoverPresentationController?.sourceView = self.view
+            self.present(mainVC, animated: true, completion: nil)
+            
+        }
+        let tutorialPage = UIAlertAction(title: "Tutorial", style: .default){action in
+            self.performSegue(withIdentifier: "tutorial", sender: self.navigationController)
+            
+        }
+        actionSheet.addAction(tutorialPage)
+        actionSheet.addAction(aboutPage)
+        actionSheet.addAction(shareButton)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true, completion: nil)
+
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectVC = segue.destination as? SelectCurrencyPop, segue.identifier == "SelectCurrencyPop" {
             selectVC.selectionDelegate = self
@@ -180,6 +209,15 @@ class MainScreenVC: UIViewController {
         selectButton.layer.cornerRadius = 10
         updateRates.layer.cornerRadius = 10
         
+
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.finishedWithInput))
+        doneButton.tintColor = .black
+        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        inputTextField.inputAccessoryView = toolBar
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
@@ -188,8 +226,9 @@ class MainScreenVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
 }
+
+
     //MARK:TABLE VIEW CONFIGURATIONS
 
     extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
@@ -231,6 +270,15 @@ class MainScreenVC: UIViewController {
             closeAction.backgroundColor = .orange
             
             return UISwipeActionsConfiguration(actions: [closeAction])
+        }
+        
+        func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+            return false
+        }
+        
+        
+        func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+            return .none
         }
 
 }
@@ -274,6 +322,18 @@ extension MainScreenVC: UITextFieldDelegate {
         }
         return true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    
+    }
 }
+
+
+
+    
+
+
 
 

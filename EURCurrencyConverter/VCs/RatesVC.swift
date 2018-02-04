@@ -25,7 +25,7 @@ class RatesVC: UIViewController {
     
     func yesterdayDate()  -> String {
         
-        let yesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date())
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: yesterday!)
@@ -68,7 +68,11 @@ class RatesVC: UIViewController {
                             }
                         }
                         catch{
+                            if  self.justOnce{
                             Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
+                            self.justOnce = false
+                            
+                        }
                         }
                     }
                 }
@@ -89,6 +93,7 @@ class RatesVC: UIViewController {
                      if  self.justOnce{
                     Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
                         self.justOnce = false
+                        
                     }
                 }
                 else{
@@ -110,7 +115,11 @@ class RatesVC: UIViewController {
                             
                         }
                         catch{
+                            if  self.justOnce{
                             Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
+                                self.justOnce = false
+                                
+                            }
                         }
                     }
                 }
@@ -136,6 +145,12 @@ class RatesVC: UIViewController {
         receivedCurrencyNames.removeAll()
         tableViewRates.reloadData()
     }
+    
+    //BACK
+    
+    func back(){
+        performSegue(withIdentifier: "noconnection", sender: navigationController)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,6 +173,8 @@ class RatesVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
+//CONFIGURATIONS OF THE TABLE RATES
 
 extension RatesVC: UITableViewDataSource,UITableViewDelegate{
     
@@ -191,6 +208,30 @@ extension RatesVC: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableViewRates.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let closeAction = UIContextualAction(style: .normal, title:  "Close", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let cell = tableView.cellForRow(at: indexPath) as! RatesCell
+            UIPasteboard.general.string = cell.rateOfTheCurrency.text!
+            
+            success(true)
+        })
+        closeAction.title = "Copy"
+        closeAction.backgroundColor = .orange
+        
+        return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
     }
 }
 

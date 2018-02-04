@@ -21,8 +21,9 @@
 		75A693E22011ED3700A7EB6A /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693E12011ED3700A7EB6A /* MainScreenVC.swift */; };
 		75A693E42011F78000A7EB6A /* SelectCurrencyPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */; };
 		75A693EA20120FA300A7EB6A /* AmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693E920120FA300A7EB6A /* AmountCell.swift */; };
-		75A919EE201CFFA000963428 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A919ED201CFFA000963428 /* NavigationVC.swift */; };
 		75A919F1201D093C00963428 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A919F0201D093C00963428 /* CoreLocation.framework */; };
+		75B617E62025155000E9F1D2 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B617E52025155000E9F1D2 /* TutorialVC.swift */; };
+		75B617E8202679E300E9F1D2 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B617E7202679E300E9F1D2 /* NavigationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +43,9 @@
 		75A693E12011ED3700A7EB6A /* MainScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
 		75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyPop.swift; sourceTree = "<group>"; };
 		75A693E920120FA300A7EB6A /* AmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountCell.swift; sourceTree = "<group>"; };
-		75A919ED201CFFA000963428 /* NavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		75A919F0201D093C00963428 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		75B617E52025155000E9F1D2 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
+		75B617E7202679E300E9F1D2 /* NavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,8 @@
 				75A693E32011F78000A7EB6A /* SelectCurrencyPop.swift */,
 				752228232019F5C6000259CF /* AboutVC.swift */,
 				7524ED3A201638C90019D1B4 /* RatesVC.swift */,
-				75A919ED201CFFA000963428 /* NavigationVC.swift */,
+				75B617E7202679E300E9F1D2 /* NavigationVC.swift */,
+				75B617E52025155000E9F1D2 /* TutorialVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -197,15 +200,16 @@
 				7524ED2E2015C9F20019D1B4 /* Alert.swift in Sources */,
 				75202F3C2019E3DF00D74E8A /* UIButtonExtension.swift in Sources */,
 				7524ED3D201638FF0019D1B4 /* RatesCell.swift in Sources */,
+				75B617E8202679E300E9F1D2 /* NavigationVC.swift in Sources */,
 				75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */,
 				7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */,
 				75A693EA20120FA300A7EB6A /* AmountCell.swift in Sources */,
-				75A919EE201CFFA000963428 /* NavigationVC.swift in Sources */,
 				7583923820192F85004B1900 /* DiffLabel.swift in Sources */,
 				7524ED302015E3860019D1B4 /* TextField.swift in Sources */,
 				75A693E22011ED3700A7EB6A /* MainScreenVC.swift in Sources */,
 				752228242019F5C6000259CF /* AboutVC.swift in Sources */,
 				75A693E42011F78000A7EB6A /* SelectCurrencyPop.swift in Sources */,
+				75B617E62025155000E9F1D2 /* TutorialVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

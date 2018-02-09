@@ -184,6 +184,14 @@ class MainScreenVC: UIViewController {
         actionSheet.addAction(aboutPage)
         actionSheet.addAction(shareButton)
         actionSheet.addAction(cancel)
+        
+        if let popoverPresentationController = actionSheet.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRect(x: UIScreen.main.bounds.size.width*0.5, y: 20, width: 10, height: 10)
+            
+        }
+        
+        
         present(actionSheet, animated: true, completion: nil)
 
     }

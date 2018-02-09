@@ -25,7 +25,7 @@ class RatesVC: UIViewController {
     
     func yesterdayDate()  -> String {
         
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        let yesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date())
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: yesterday!)

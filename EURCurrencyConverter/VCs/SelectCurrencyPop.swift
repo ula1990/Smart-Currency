@@ -14,7 +14,7 @@ protocol transferSelectedRateDelegate{
 
 class SelectCurrencyPop: UIViewController {
     
-    var currencyNames = ["CNY", "PLN", "THB", "BGN", "AUD", "SEK", "ILS", "BRL", "DKK", "GBP", "RUB", "CHF", "MXN", "HRK", "RON", "TRY", "SGD", "NOK", "HUF", "NZD", "USD", "MYR", "IDR", "KRW", "JPY", "INR", "PHP", "CZK", "HKD", "ZAR", "CAD","EUR"]
+    var currencyNames = ["EUR", "USD", "CAD", "GBP", "RUB","CNY", "PLN", "THB", "BGN", "AUD", "SEK", "ILS", "BRL", "DKK", "CHF", "MXN", "HRK", "RON", "TRY", "SGD", "NOK", "HUF", "NZD", "MYR", "IDR", "KRW", "JPY", "INR", "PHP", "CZK", "HKD", "ZAR"]
     var selectedCurrency: String!
     var selectionDelegate: transferSelectedRateDelegate?
     

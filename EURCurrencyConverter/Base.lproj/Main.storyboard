@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D9g-QH-ZTr">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -25,11 +25,11 @@
             <objects>
                 <viewController storyboardIdentifier="MainScreenVC" title="MainScreenVC" id="BYZ-38-t0r" customClass="MainScreenVC" customModule="EURCurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please put amount" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-kJ-gGb" customClass="textField" customModule="EURCurrencyConverter" customModuleProvider="target">
-                                <rect key="frame" x="20" y="152" width="215" height="50"/>
+                                <rect key="frame" x="20" y="152" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.39905286815068491" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="CVo-80-d9U"/>
@@ -44,7 +44,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfk-4V-MR6">
-                                <rect key="frame" x="20" y="212" width="215" height="40"/>
+                                <rect key="frame" x="20" y="212" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.082352941176470587" green="0.49411764705882355" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SiB-wY-1V2"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="600-6a-hKI">
-                                <rect key="frame" x="20" y="262" width="215" height="40"/>
+                                <rect key="frame" x="20" y="262" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eLQ-UE-boL"/>
@@ -88,14 +88,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zxH-aW-dEp">
-                                <rect key="frame" x="0.0" y="326" width="255" height="154"/>
+                                <rect key="frame" x="0.0" y="326" width="375" height="341"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="bBY-Ox-r3K" customClass="AmountCell" customModule="EURCurrencyConverter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="255" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="bBY-Ox-r3K" customClass="AmountCell" customModule="EURCurrencyConverter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bBY-Ox-r3K" id="mza-te-GhK">
-                                            <rect key="frame" x="0.0" y="0.0" width="255" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fc5-Ou-SC1">
@@ -172,7 +172,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safe" translatesAutoresizingMaskIntoConstraints="NO" id="4Ib-GG-egO">
-                                <rect key="frame" x="155" y="67" width="80" height="80"/>
+                                <rect key="frame" x="275" y="67" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="ctw-sA-Vgx"/>
                                     <constraint firstAttribute="height" constant="80" id="x5x-QM-qXB"/>
@@ -416,18 +416,18 @@
             <objects>
                 <viewController title="Rates" id="uYO-0H-612" customClass="RatesVC" customModule="EURCurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xOi-R6-eqM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Txc-mc-1Nz">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatesCell" rowHeight="100" id="aVk-2q-J3M" customClass="RatesCell" customModule="EURCurrencyConverter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aVk-2q-J3M" id="anu-7W-Dce">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-OZ-BOZ">
@@ -504,18 +504,18 @@
             <objects>
                 <viewController title="About" id="VBw-BT-PIo" customClass="AboutVC" customModule="EURCurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vox-cj-Jq7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3w-Dd-Kxd">
-                                <rect key="frame" x="10" y="163" width="300" height="104"/>
+                                <rect key="frame" x="10" y="163" width="355" height="291"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Application based on lightweight API for current and historical foreign exchange (forex) rates published by the European Central Bank</string>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Developed by" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IRA-la-icb">
-                                <rect key="frame" x="55" y="71" width="210" height="44"/>
+                                <rect key="frame" x="55" y="71" width="265" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="inZ-QT-tY3"/>
@@ -524,7 +524,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-q5-7YI">
-                                <rect key="frame" x="125" y="290" width="70" height="70"/>
+                                <rect key="frame" x="152.5" y="477" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="89A-x6-W1h"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="unn-ct-z9o"/>
@@ -535,7 +535,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eal-fe-a9N">
-                                <rect key="frame" x="123.5" y="390" width="70" height="70"/>
+                                <rect key="frame" x="151" y="577" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="6tf-5h-jNx"/>
                                     <constraint firstAttribute="height" constant="70" id="aNC-fX-rWb"/>
@@ -546,7 +546,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0t-lF-tcP">
-                                <rect key="frame" x="39.5" y="344" width="70" height="70"/>
+                                <rect key="frame" x="67" y="531" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="UaW-si-pkU"/>
                                     <constraint firstAttribute="height" constant="70" id="Yq1-T0-MlK"/>
@@ -557,7 +557,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eZ-bj-JHQ">
-                                <rect key="frame" x="210" y="344" width="70" height="70"/>
+                                <rect key="frame" x="237.5" y="531" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="FpN-FY-yIC"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="Orz-sA-HMu"/>
@@ -568,7 +568,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Uladzislau Daratsiuk" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="t0D-wC-Ujc">
-                                <rect key="frame" x="24" y="123" width="273" height="44"/>
+                                <rect key="frame" x="24" y="123" width="328" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="BcS-Jt-Lpf"/>
@@ -613,11 +613,11 @@
             <objects>
                 <viewController title="Nearest exchange Point" id="loK-5g-anJ" customClass="NavigationVC" customModule="EURCurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RWL-l4-Fyl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ltW-AZ-ABJ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ltW-AZ-ABJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="416"/>
                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="loK-5g-anJ" id="W0Z-wX-U8I"/>
@@ -646,11 +646,11 @@
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="weq-cq-xtH" customClass="SelectCurrencyPop" customModule="EURCurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SzM-oB-Q8Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBF-GD-qyh">
-                                <rect key="frame" x="26" y="131" width="268" height="218"/>
+                                <rect key="frame" x="53.5" y="224.5" width="268" height="218"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLy-M5-Mm8">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="30"/>
@@ -721,7 +721,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D9g-QH-ZTr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="coK-1S-QcG">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">

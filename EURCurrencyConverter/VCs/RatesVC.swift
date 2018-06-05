@@ -37,7 +37,7 @@ class RatesVC: UIViewController {
 
     func getData(nameOfCurrency: String?){
         cleanArrays()
-        let url = URL(string: "https://api.fixer.io/latest?base=" + nameOfCurrency!)
+        let url = URL(string: "https://exchangeratesapi.io/api/latest?base=" + nameOfCurrency!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
             //FOR FASTER WORK
@@ -63,7 +63,7 @@ class RatesVC: UIViewController {
                                 for (key,value ) in rates
                                 {
                                     self.receivedCurrencyNames.append((key as? String)!)
-                                    self.recerivedCurrencyRates.append((value as? Double)!)
+                                    self.recerivedCurrencyRates.append(round(((value as? Double)!)*1000)/1000)
                                 }
                             }
                         }
@@ -83,7 +83,7 @@ class RatesVC: UIViewController {
     
     //GET OLD RATES
   func getOld(selectedCurrency: String?, date: String?){
-        let urlOld = URL(string: "https://api.fixer.io/" + date! + "?base=" + selectedCurrency!)
+        let urlOld = URL(string: "https://exchangeratesapi.io/api/" + date! + "?base=" + selectedCurrency!)
         let taskOld = URLSession.shared.dataTask(with: urlOld!) { (data, response, error) in
             
             //FOR FASTER WORK
@@ -106,7 +106,7 @@ class RatesVC: UIViewController {
                                 for (key,value ) in rates
                                 {
                                     self.oldCurrencyNames.append((key as? String)!)
-                                    self.oldCurrencyRates.append((value as? Double)!)
+                                    self.oldCurrencyRates.append(round(((value as? Double)!)*1000)/1000)
                                 }
                                 self.differenceInRates = self.getDifferenceInRates()
                             }

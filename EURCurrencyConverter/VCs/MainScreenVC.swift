@@ -98,7 +98,7 @@ class MainScreenVC: UIViewController {
         
         receivedRates.removeAll()
         receivedTitle.removeAll()
-        let url = URL(string: "https://api.fixer.io/latest?base=" + nameOfCurrency!)
+        let url = URL(string: "https://exchangeratesapi.io/api/latest?base=" + nameOfCurrency!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in       
             //FOR FASTER WORK OF PICKERVIEW
             DispatchQueue.main.async {

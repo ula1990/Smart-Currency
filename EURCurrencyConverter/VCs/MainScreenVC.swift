@@ -124,7 +124,7 @@ class MainScreenVC: UIViewController {
                                 for (key,value ) in rates
                                 {
                                     self.receivedTitle.append((key as? String)!)
-                                    self.receivedRates.append((value as? Double)!)
+                                    self.receivedRates.append(round(((value as? Double)!)*100)/100)
                                     self.calculateAmount()
                                 }
                             }

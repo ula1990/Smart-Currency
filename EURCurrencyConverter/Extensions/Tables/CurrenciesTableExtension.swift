@@ -40,6 +40,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             currenciesTable.deselectRow(at: indexPath, animated: true)
         }else{
             let menu = menuList[indexPath.row]
+            let vc = UINavigationController(rootViewController: menu.viewController!)
+            present(vc, animated: true, completion: nil)
             menuTable.deselectRow(at: indexPath, animated: true)
             handleMenu()
         }

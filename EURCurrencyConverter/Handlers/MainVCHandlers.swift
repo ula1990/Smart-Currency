@@ -231,7 +231,7 @@ extension MainVC {
     public func creatMenuArray()->[MenuModel]{
         var array:[MenuModel] = []
         
-        let menuItem1 = MenuModel(title: "Financial News", icon: UIImage(named: "news"), viewController: RatesVC())
+        let menuItem1 = MenuModel(title: "Financial News", icon: UIImage(named: "news"), viewController: NewsVC())
         let menuItem2 = MenuModel(title: "Tutorial", icon: UIImage(named: "tutorial"), viewController: TutorialVC())
         let menuItem3 = MenuModel(title: "About", icon: UIImage(named: "about"), viewController: AboutVC() )
         

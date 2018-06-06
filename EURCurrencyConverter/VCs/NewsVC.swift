@@ -81,7 +81,10 @@ class NewsVC: UIViewController {
     fileprivate func setupNavBar(){
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"back"), style: .plain, target: self, action: #selector(handleBack))
     }
+    
+ 
 
     override func viewDidLoad() {
         super.viewDidLoad()

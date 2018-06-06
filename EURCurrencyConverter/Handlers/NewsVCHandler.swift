@@ -55,5 +55,10 @@ extension NewsVC {
     @objc public func handleUpdate(){
         self.getDataNews(token: token)
     }
+    
+    @objc public func handleBack(){
+        let vc = UINavigationController(rootViewController: MainVC())
+        present(vc, animated: true, completion: nil)
+    }
 
 }

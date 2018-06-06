@@ -70,7 +70,8 @@ extension MainVC {
             currenciesTable.reloadData()
         }else{
             currentAmount.removeAll()
-            currentAmount = receivedCurrencies.map{ round((($0.rate! * Double(inputTextField.text!)!)*1000)/1000) }
+//            currentAmount = receivedCurrencies.map{ round((($0.rate! * Double(inputTextField.text!)!)*1000)/1000) }
+            currentAmount = receivedCurrencies.map{ $0.rate! * Double(inputTextField.text!)! }
             currenciesTable.reloadData()
         }
     }

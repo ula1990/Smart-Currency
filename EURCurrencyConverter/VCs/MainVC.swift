@@ -225,12 +225,12 @@ class MainVC: UIViewController {
       
         resultLabel.topAnchor.constraint(equalTo: currenciesView.topAnchor, constant: 10).isActive = true
         resultLabel.leftAnchor.constraint(equalTo: currenciesView.leftAnchor, constant: 10).isActive = true
-        resultLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        resultLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         resultLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
         currenciesTable.centerXAnchor.constraint(equalTo: currenciesView.centerXAnchor).isActive = true
-        currenciesTable.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10).isActive = true
-        currenciesTable.bottomAnchor.constraint(equalTo: currenciesView.bottomAnchor, constant: -10).isActive = true
+        currenciesTable.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 20).isActive = true
+        currenciesTable.bottomAnchor.constraint(equalTo: currenciesView.bottomAnchor, constant: -20).isActive = true
         currenciesTable.leftAnchor.constraint(equalTo: currenciesView.leftAnchor, constant: 10).isActive = true
         currenciesTable.rightAnchor.constraint(equalTo: currenciesView.rightAnchor, constant: -10).isActive = true
     }

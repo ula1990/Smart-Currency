@@ -10,8 +10,6 @@ import UIKit
 
 class MainVC: UIViewController {
 
-    var receivedRates: [Double] = []
-    var receivedTitle: [String] = []
     var currentAmount: [Double] = []
     var receivedCurrencies: [Currency] = []
     var selectedCurrencyActual: String = "EUR"
@@ -27,7 +25,7 @@ class MainVC: UIViewController {
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.black.withAlphaComponent(0.5)
         label.textAlignment = .left
-        label.text = "Last update: 19-05-2018"
+        label.text = "Last update: Unknown"
         return label
     }()
     
@@ -171,6 +169,11 @@ class MainVC: UIViewController {
         currenciesTable.rightAnchor.constraint(equalTo: currenciesView.rightAnchor, constant: -10).isActive = true
     }
     
+    fileprivate func setupNavBar(){
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(lastUpdateDateLabel)
@@ -183,8 +186,7 @@ class MainVC: UIViewController {
         currenciesView.addSubview(currenciesTable)
         inputTextView.addSubview(inputTextField)
         view.backgroundColor = .white
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        setupNavBar()
         setupView()
         currenciesTable.delegate = self
         currenciesTable.dataSource = self

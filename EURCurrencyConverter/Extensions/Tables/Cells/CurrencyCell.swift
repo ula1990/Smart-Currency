@@ -49,6 +49,8 @@ class CurrencyCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.masksToBounds = false
         image.clipsToBounds = true
+        image.layer.shadowRadius = 2
+        image.layer.shadowOpacity = 0.2
         return image
     }()
     

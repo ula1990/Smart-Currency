@@ -70,7 +70,7 @@ extension MainVC {
             currenciesTable.reloadData()
         }else{
             currentAmount.removeAll()
-            currentAmount = receivedCurrencies.map{ $0.rate! * Double(inputTextField.text!)! }
+            currentAmount = receivedCurrencies.map{ round((($0.rate! * Double(inputTextField.text!)!)*1000)/1000) }
             currenciesTable.reloadData()
         }
     }
@@ -154,7 +154,6 @@ extension MainVC {
         return date
     }
     
-    //GET OLD RATES
    @objc public func getOld(selectedCurrency: String?, date: String?){
         oldCurrencies.removeAll()
         differenceInRates.removeAll()

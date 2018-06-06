@@ -11,17 +11,6 @@ import UIKit
 
 class textField: UITextField {
     
-    var maxLength: Int = 10
-    
-    override func willMove(toSuperview newSuperview: UIView?) {
-        addTarget(self, action: #selector(editingChanged), for: .editingChanged)
-        editingChanged(self)
-    }
-    @objc func editingChanged(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        textField.text = String(text.prefix(maxLength))
-    }
-    
     //BLOCK PASTE FUNCTION
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) {
@@ -29,8 +18,4 @@ class textField: UITextField {
         }
         return super.canPerformAction(action, withSender: sender)
     }
-    
-    
-    
-    
 }

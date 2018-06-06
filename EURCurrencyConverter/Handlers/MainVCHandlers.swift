@@ -34,11 +34,11 @@ extension MainVC {
                             if let rates = myJson["rates"] as? NSDictionary{
                                 for (key,value ) in rates{
                                     let currency = Currency(name: (key as? String)!, rate: round(((value as? Double)!)*100)/100)
-                                    print("name: " + (key as? String)! + ", rate:" + String(round(((value as? Double)!)*100)/100))
                                     self.receivedCurrencies.append(currency)
                                     self.handleInput()
                                 }
                             }
+                            
                         }
                         catch{
                             self.getData(nameOfCurrency: self.selectedCurrencyLabel.text! )
@@ -46,7 +46,7 @@ extension MainVC {
                     }
                 }
                 self.currenciesTable.reloadData()
-    
+                self.getOld(selectedCurrency: self.selectedCurrencyActual, date: self.yesterdayDate())
             }
         }
         task.resume()
@@ -145,5 +145,101 @@ extension MainVC {
 
         return array
     }
+
+    @objc public func yesterdayDate() -> String {
+        let yesterday = Calendar.current.date(byAdding: .day, value: -3, to: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.string(from: yesterday!)
+        return date
+    }
     
+    //GET OLD RATES
+   @objc public func getOld(selectedCurrency: String?, date: String?){
+        oldCurrencies.removeAll()
+        differenceInRates.removeAll()
+        let urlOld = URL(string: "https://exchangeratesapi.io/api/" + date! + "?base=" + selectedCurrency!)
+        let taskOld = URLSession.shared.dataTask(with: urlOld!) { (data, response, error) in
+            DispatchQueue.main.async {
+                if error != nil
+                {
+                    if  self.justOnce{
+                        Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
+                        self.justOnce = false
+                    }
+                }
+                else{
+                    if let content = data
+                    {
+                        do{
+                            let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                            if let rates = myJson["rates"] as? NSDictionary
+                            {
+                                for (key,value ) in rates
+                                {
+                                    let currency = Currency(name: (key as? String)!, rate: round(((value as? Double)!)*100)/100)
+                                    self.oldCurrencies.append(currency)
+                                }
+                                self.differenceInRates = self.getDifferenceInRates()
+                            }
+                        }
+                        catch{
+                            if  self.justOnce{
+                                Alert.showBasic(title: "Can't download rates", msg: "Please check connection", vc: self)
+                                self.justOnce = false
+                            }
+                        }
+                    }
+                }
+                self.rateInfoCollection.reloadData()
+            }
+        }
+        taskOld.resume()
+    }
+    
+    @objc public func getDifferenceInRates() -> [Double]{
+        for (freshRate,oldRate) in zip(receivedCurrencies, oldCurrencies){
+            differenceInRates.append(round(((oldRate.rate! - freshRate.rate!)*1000)/1000))}
+        return differenceInRates
+    }
+    
+    @objc public func handleMenu(){
+        if (menuShowing){
+            UIView.animate(withDuration: 0.3) {
+                self.menuHeightAnchor?.isActive = false
+                self.menuHeightAnchor = self.menuView.heightAnchor.constraint(equalToConstant: 0)
+                self.menuHeightAnchor?.isActive = true
+                self.view.layoutIfNeeded()
+            }
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.menuHeightAnchor?.isActive = false
+                self.menuHeightAnchor = self.menuView.heightAnchor.constraint(equalToConstant: 160)
+                self.menuHeightAnchor?.isActive = true
+                self.view.layoutIfNeeded()
+            }) { (true) in
+            }
+        }
+        menuShowing = !menuShowing
+    }
+    @objc public func handleShare(){
+        let activityVC = UIActivityViewController(activityItems: ["Take a look on amazing currency converter https://itunes.apple.com/us/app/skatter-pro/id1326491203?ls=1&mt=8"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    public func creatMenuArray()->[MenuModel]{
+        var array:[MenuModel] = []
+        
+        let menuItem1 = MenuModel(title: "Financial News", icon: UIImage(named: "news"), viewController: RatesVC())
+        let menuItem2 = MenuModel(title: "Tutorial", icon: UIImage(named: "tutorial"), viewController: TutorialVC())
+        let menuItem3 = MenuModel(title: "About", icon: UIImage(named: "about"), viewController: AboutVC() )
+        
+        array.append(menuItem1)
+        array.append(menuItem2)
+        array.append(menuItem3)
+
+        
+        return array
+    }
 }

@@ -20,16 +20,10 @@ class RatesCell: UITableViewCell {
     }
     func changeColorForLabel(){
     if differenceLabel.text!.range(of:"-") != nil {
-    differenceLabel.backgroundColor = UIColor.red.withAlphaComponent(0.8)
-
-         
-    }else{
-        differenceLabel.backgroundColor = UIColor.init(red: 0.1, green: 0.7, blue: 0.1, alpha: 0.8)
- 
-        
-        
-    }
-    
+            differenceLabel.backgroundColor = UIColor.red.withAlphaComponent(0.8)
+        }else{
+            differenceLabel.backgroundColor = UIColor.init(red: 0.1, green: 0.7, blue: 0.1, alpha: 0.8)
+        }
     }
     
     override func awakeFromNib() {

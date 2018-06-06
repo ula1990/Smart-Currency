@@ -30,6 +30,10 @@
 		C08E648B20C7E32C008B06C0 /* SelectCurPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E648A20C7E32C008B06C0 /* SelectCurPickerExtension.swift */; };
 		C08E648D20C7E3AE008B06C0 /* SelectCurHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E648C20C7E3AE008B06C0 /* SelectCurHandlers.swift */; };
 		C08E649120C7E7DA008B06C0 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E649020C7E7DA008B06C0 /* NotificationExtension.swift */; };
+		C0A2438A20C80C8100324253 /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2438920C80C8100324253 /* RateCell.swift */; };
+		C0A2438C20C80CA100324253 /* RateCollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2438B20C80CA100324253 /* RateCollectionViewExtension.swift */; };
+		C0A2439020C82A0A00324253 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2438F20C82A0A00324253 /* MenuCell.swift */; };
+		C0A2439220C82A4B00324253 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2439120C82A4B00324253 /* MenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,10 @@
 		C08E648A20C7E32C008B06C0 /* SelectCurPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurPickerExtension.swift; sourceTree = "<group>"; };
 		C08E648C20C7E3AE008B06C0 /* SelectCurHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurHandlers.swift; sourceTree = "<group>"; };
 		C08E649020C7E7DA008B06C0 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		C0A2438920C80C8100324253 /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
+		C0A2438B20C80CA100324253 /* RateCollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCollectionViewExtension.swift; sourceTree = "<group>"; };
+		C0A2438F20C82A0A00324253 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		C0A2439120C82A4B00324253 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				7524ED2F2015E3860019D1B4 /* TextField.swift */,
+				C0A2439120C82A4B00324253 /* MenuModel.swift */,
 				C035223820C6D451000B3004 /* Currency.swift */,
 			);
 			path = Models;
@@ -148,6 +157,7 @@
 		C083314520C6B5F90007687D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C0A2438D20C80CA500324253 /* Collections */,
 				C08E648E20C7E4BA008B06C0 /* Tables */,
 				75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */,
 				C08E649020C7E7DA008B06C0 /* NotificationExtension.swift */,
@@ -170,7 +180,25 @@
 			isa = PBXGroup;
 			children = (
 				75A693E920120FA300A7EB6A /* CurrencyCell.swift */,
+				C0A2438F20C82A0A00324253 /* MenuCell.swift */,
 				7524ED3C201638FF0019D1B4 /* RatesCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C0A2438D20C80CA500324253 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				C0A2438B20C80CA100324253 /* RateCollectionViewExtension.swift */,
+				C0A2438E20C80CB600324253 /* Cells */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		C0A2438E20C80CB600324253 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C0A2438920C80C8100324253 /* RateCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -248,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08E648D20C7E3AE008B06C0 /* SelectCurHandlers.swift in Sources */,
+				C0A2438A20C80C8100324253 /* RateCell.swift in Sources */,
 				7524ED2E2015C9F20019D1B4 /* AlertHandler.swift in Sources */,
 				75202F3C2019E3DF00D74E8A /* UIButtonExtension.swift in Sources */,
 				7524ED3D201638FF0019D1B4 /* RatesCell.swift in Sources */,
@@ -255,6 +284,7 @@
 				C035223920C6D451000B3004 /* Currency.swift in Sources */,
 				C08E649120C7E7DA008B06C0 /* NotificationExtension.swift in Sources */,
 				75B617E8202679E300E9F1D2 /* NavigationVC.swift in Sources */,
+				C0A2439220C82A4B00324253 /* MenuModel.swift in Sources */,
 				75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */,
 				7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */,
 				75A693EA20120FA300A7EB6A /* CurrencyCell.swift in Sources */,
@@ -262,7 +292,9 @@
 				7524ED302015E3860019D1B4 /* TextField.swift in Sources */,
 				75A693E22011ED3700A7EB6A /* MainVC.swift in Sources */,
 				C083314720C6B64D0007687D /* CurrenciesTableExtension.swift in Sources */,
+				C0A2439020C82A0A00324253 /* MenuCell.swift in Sources */,
 				C08E648B20C7E32C008B06C0 /* SelectCurPickerExtension.swift in Sources */,
+				C0A2438C20C80CA100324253 /* RateCollectionViewExtension.swift in Sources */,
 				752228242019F5C6000259CF /* AboutVC.swift in Sources */,
 				75A693E42011F78000A7EB6A /* SelectCurrencyPop.swift in Sources */,
 				75B617E62025155000E9F1D2 /* TutorialVC.swift in Sources */,

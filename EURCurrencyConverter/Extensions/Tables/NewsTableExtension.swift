@@ -12,11 +12,11 @@ import SafariServices
 
 extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
+        return newsOffline.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let article = news[indexPath.row]
+        let article = newsOffline[indexPath.row]
         let cell = newsTable.dequeueReusableCell(withIdentifier: newsCellId, for: indexPath) as! NewsCell
         cell.updateData(title: article.headline, description: article.desc, imageUrl: article.imageUrl!, pubDate: article.publishedAt)
         return cell
@@ -27,7 +27,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = news[indexPath.row]
+        let article = newsOffline[indexPath.row]
         let articleUrl = URL(string: article.url!)
         let safariVC = SFSafariViewController(url: articleUrl!)
         present(safariVC, animated: true, completion: nil)

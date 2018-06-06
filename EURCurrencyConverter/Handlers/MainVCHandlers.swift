@@ -19,8 +19,7 @@ extension MainVC {
                 if error != nil{
                     Alert.showBasic(title: "Offline Mode", msg: "Please check connection and update the rates,in offline mode available only EUR", vc: self)
                     self.receivedCurrencies = self.createOfflineArray()
-                    self.handleInput()
-                    self.currenciesTable.reloadData()
+                    self.currentAmount = self.receivedCurrencies.map{ $0.rate! * 0.0 }
                     self.selectedCurrencyActual = "EUR"
                     self.selectedCurrencyLabel.text = "Current: " + self.selectedCurrencyActual
                 }
@@ -165,6 +164,8 @@ extension MainVC {
                 {
                     if  self.justOnce{
                         Alert.showBasic(title: "No Internet", msg: "Please check connection", vc: self)
+                        self.oldCurrencies = self.createOfflineArray()
+                        self.differenceInRates = self.getDifferenceInRates()
                         self.justOnce = false
                     }
                 }
@@ -199,7 +200,7 @@ extension MainVC {
     
     @objc public func getDifferenceInRates() -> [Double]{
         for (freshRate,oldRate) in zip(receivedCurrencies, oldCurrencies){
-            differenceInRates.append(round(((oldRate.rate! - freshRate.rate!)*1000)/1000))}
+            differenceInRates.append(round(((freshRate.rate! - oldRate.rate!)*1000)/1000))}
         return differenceInRates
     }
     

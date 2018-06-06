@@ -38,6 +38,7 @@ extension NewsVC {
                                     }
                                     self.news.append(article)
                                 }
+                                self.newsOffline = self.news
                             }
                             
                         }

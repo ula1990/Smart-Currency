@@ -14,6 +14,7 @@ class NewsVC: UIViewController {
     let newsUrl = "https://newsapi.org/v2/top-headlines?sources=bloomberg&apiKey="
     let token = "54fde7b8bbba4883abdf30f18bcea926"
     var news: [Article] = []
+    var newsOffline: [Article] = []
     
     lazy var mainView: UIView = {
         let view = UIView()

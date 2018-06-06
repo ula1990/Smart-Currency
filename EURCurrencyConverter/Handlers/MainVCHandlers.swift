@@ -242,4 +242,8 @@ extension MainVC {
         
         return array
     }
+    
+    @objc public func finishedWithInput (){
+        view.endEditing(true)
+    }
 }

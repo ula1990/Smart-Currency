@@ -86,6 +86,7 @@ class MainVC: UIViewController {
         tf.layer.borderWidth = 1
         tf.textAlignment = .center
         tf.addTarget(self, action: #selector(handleInput), for: .allEditingEvents)
+        tf.keyboardType = .numberPad
         return tf
     }()
     
@@ -243,6 +244,16 @@ class MainVC: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    fileprivate func toolBarSetup() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.finishedWithInput))
+        doneButton.tintColor = .black
+        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        inputTextField.inputAccessoryView = toolBar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(menuView)
@@ -270,7 +281,7 @@ class MainVC: UIViewController {
         menuTable.dataSource = self
         menuList = creatMenuArray()
         getData(nameOfCurrency: selectedCurrencyActual)
-        
+        toolBarSetup()
         currencyObserver = NotificationCenter.default.addObserver(forName: .selectCurrency, object: nil, queue: OperationQueue.main, using: { (notification) in
             let selectCurVC = notification.object as! SelectCurrencyPop
             self.selectedCurrencyLabel.text = "Current: " + selectCurVC.selectedCurrency!

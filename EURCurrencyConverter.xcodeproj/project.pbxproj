@@ -29,6 +29,7 @@
 		C083314720C6B64D0007687D /* CurrenciesTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C083314620C6B64D0007687D /* CurrenciesTableExtension.swift */; };
 		C08E648B20C7E32C008B06C0 /* SelectCurPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E648A20C7E32C008B06C0 /* SelectCurPickerExtension.swift */; };
 		C08E648D20C7E3AE008B06C0 /* SelectCurHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E648C20C7E3AE008B06C0 /* SelectCurHandlers.swift */; };
+		C08E649120C7E7DA008B06C0 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E649020C7E7DA008B06C0 /* NotificationExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		C083314620C6B64D0007687D /* CurrenciesTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableExtension.swift; sourceTree = "<group>"; };
 		C08E648A20C7E32C008B06C0 /* SelectCurPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurPickerExtension.swift; sourceTree = "<group>"; };
 		C08E648C20C7E3AE008B06C0 /* SelectCurHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurHandlers.swift; sourceTree = "<group>"; };
+		C08E649020C7E7DA008B06C0 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				C08E648E20C7E4BA008B06C0 /* Tables */,
 				75202F3B2019E3DF00D74E8A /* UIButtonExtension.swift */,
+				C08E649020C7E7DA008B06C0 /* NotificationExtension.swift */,
 				C083314320C6B5D70007687D /* TextFieldExtension.swift */,
 				C08E648A20C7E32C008B06C0 /* SelectCurPickerExtension.swift */,
 			);
@@ -250,6 +253,7 @@
 				7524ED3D201638FF0019D1B4 /* RatesCell.swift in Sources */,
 				C083314420C6B5D70007687D /* TextFieldExtension.swift in Sources */,
 				C035223920C6D451000B3004 /* Currency.swift in Sources */,
+				C08E649120C7E7DA008B06C0 /* NotificationExtension.swift in Sources */,
 				75B617E8202679E300E9F1D2 /* NavigationVC.swift in Sources */,
 				75A693D02011ECF300A7EB6A /* AppDelegate.swift in Sources */,
 				7524ED3B201638C90019D1B4 /* RatesVC.swift in Sources */,

@@ -18,6 +18,7 @@ class MainVC: UIViewController {
     var selectedRateforInfo: String?
     let formatter = NumberFormatter()
     let resultCellId = "resultCellId"
+    var currencyObserver: NSObjectProtocol?
     
     lazy var lastUpdateDateLabel: UILabel = {
        let label = UILabel()
@@ -111,7 +112,6 @@ class MainVC: UIViewController {
     lazy var currenciesTable: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-//        table.separatorStyle = UITableViewCellSeparatorStyle.none
         table.layer.cornerRadius = 5
         table.register(CurrencyCell.self, forCellReuseIdentifier: resultCellId)
         return table
@@ -190,7 +190,19 @@ class MainVC: UIViewController {
         currenciesTable.dataSource = self
         inputTextField.delegate = self
         getData(nameOfCurrency: selectedCurrencyActual)
+        currencyObserver = NotificationCenter.default.addObserver(forName: .selectCurrency, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let selectCurVC = notification.object as! SelectCurrencyPop
+            self.selectedCurrencyLabel.text = "Current: " + selectCurVC.selectedCurrency!
+            self.selectedCurrencyActual = selectCurVC.selectedCurrency!
+            self.getData(nameOfCurrency: self.selectedCurrencyActual)
+            
+        })
     }
     
-   
+    override func viewDidDisappear(_ animated: Bool) {
+        if let currencyObserver = currencyObserver{
+            NotificationCenter.default.removeObserver(currencyObserver)
+        }
+    }
+
 }

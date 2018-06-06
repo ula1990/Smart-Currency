@@ -11,8 +11,7 @@ import UIKit
 
 extension MainVC {
     @objc public func getData(nameOfCurrency: String?){
-        receivedRates.removeAll()
-        receivedTitle.removeAll()
+        receivedCurrencies.removeAll()
         let url = URL(string: "https://exchangeratesapi.io/api/latest?base=" + nameOfCurrency!)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             //FOR FASTER WORK OF PICKERVIEW
@@ -45,6 +44,7 @@ extension MainVC {
         }
         task.resume()
     }
+    
     
     @objc public func handleUpdateCurrencies(){
         getData(nameOfCurrency: selectedCurrencyActual)

@@ -13,11 +13,11 @@ class NewsCell: UITableViewCell {
     lazy var newsTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = UIColor.black.withAlphaComponent(0.7)
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .left
-//        label.adjustsFontSizeToFitWidth = true
-//        label.minimumScaleFactor = 0.2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
         label.numberOfLines = 3
         return label
     }()
@@ -37,7 +37,7 @@ class NewsCell: UITableViewCell {
     lazy var newsDate: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = UIColor.black.withAlphaComponent(0.7)
         label.font = UIFont.systemFont(ofSize: 10)
         label.textAlignment = .right
         label.adjustsFontSizeToFitWidth = true
@@ -90,7 +90,7 @@ class NewsCell: UITableViewCell {
         
         newsTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         newsTitle.leftAnchor.constraint(equalTo: newsImage.rightAnchor, constant: 20).isActive = true
-        newsTitle.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        newsTitle.rightAnchor.constraint(equalTo: newsDate.leftAnchor, constant: -5).isActive = true
         newsTitle.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         newsDescription.topAnchor.constraint(equalTo: newsTitle.bottomAnchor, constant: 5).isActive = true

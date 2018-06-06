@@ -51,5 +51,9 @@ extension NewsVC {
         }
         task.resume()
     }
+    
+    @objc public func handleUpdate(){
+        self.getDataNews(token: token)
+    }
 
 }

@@ -36,6 +36,14 @@ class NewsVC: UIViewController {
         return label
     }()
     
+    lazy var updateNewsButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "update"), for: .normal)
+        button.addTarget(self, action: #selector(handleUpdate), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var newsTable: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -53,13 +61,17 @@ class NewsVC: UIViewController {
         mainView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10).isActive = true
         
         titleLabel.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: mainView.leftAnchor,constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: mainView.rightAnchor,constant: -10).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: mainView.topAnchor,constant: 10).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        updateNewsButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        updateNewsButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        updateNewsButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        updateNewsButton.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 2).isActive = true
 
         newsTable.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
-        newsTable.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 20).isActive = true
+        newsTable.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 10).isActive = true
         newsTable.bottomAnchor.constraint(equalTo: mainView.bottomAnchor,constant: -10).isActive = true
         newsTable.leftAnchor.constraint(equalTo: mainView.leftAnchor,constant: 10).isActive = true
         newsTable.rightAnchor.constraint(equalTo: mainView.rightAnchor,constant: -10).isActive = true
@@ -78,6 +90,7 @@ class NewsVC: UIViewController {
         view.addSubview(mainView)
         mainView.addSubview(titleLabel)
         mainView.addSubview(newsTable)
+        mainView.addSubview(updateNewsButton)
         newsTable.delegate = self
         newsTable.dataSource = self
         setupView()
@@ -90,5 +103,6 @@ class NewsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+ 
  
 }

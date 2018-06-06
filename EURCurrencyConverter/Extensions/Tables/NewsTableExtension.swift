@@ -31,6 +31,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
         let articleUrl = URL(string: article.url!)
         let safariVC = SFSafariViewController(url: articleUrl!)
         present(safariVC, animated: true, completion: nil)
+        newsTable.deselectRow(at: indexPath, animated: true)
     }
     
     
